@@ -22,13 +22,29 @@ const text = [
 
 
 const boxActiveImg = document.querySelector(".col-10");
-for (let i = 0; i < items.length; i++) {
-    const currentActive = items[i];
+let currentIndex = 4;
 
-    const tagImgActive = `<img src="${currentActive}" height="" width="100%" alt="img ${i}">`;
+for (let i = 0; i < items.length; i++) {
+    const urlImg = items[i];
+
+    /*  let tagImgActive = `<img src="${urlImg}" height="" width="100%" alt="img ${i}">`;*/
+    /*   */
+
+    let classeActive = "";
+
+    if (i === currentIndex) {
+        classeActive = "active";
+    }
+    let tagImgActive = `<img class="${classeActive}" src="${urlImg}"  width="100%" alt="img ${i}" >`;
+    console.log(tagImgActive);
     boxActiveImg.innerHTML += tagImgActive;
 
 }
+
+
+
+
+
 
 const boxThumbnail = document.querySelector(".col-2");
 
@@ -44,3 +60,34 @@ for (let i = 0; i < items.length; i++) {
 
 
 }
+
+
+// FRECCE
+
+const arrowUp = document.querySelector(".arrow-up");
+const arrowDown = document.querySelector(".arrow-down");
+
+
+arrowUp.addEventListener("click", function () {
+    const activeImage = document.querySelector(".active");
+    activeImage.classList.remove("active");
+
+    currentIndex--;
+    const imageTag = boxActiveImg.querySelectorAll("img");
+    const newActiveImage = imageTag[currentIndex];
+    newActiveImage.classList.add("active");
+    console.log(newActiveImage);
+});
+arrowDown.addEventListener("click", function () {
+    const activeImage = document.querySelector(".active");
+    activeImage.classList.remove("active");
+
+    currentIndex++;
+    const imageTag = boxActiveImg.querySelectorAll("img");
+    const newActiveImage = imageTag[currentIndex];
+    newActiveImage.classList.add("active");
+    console.log(newActiveImage);
+});
+
+
+

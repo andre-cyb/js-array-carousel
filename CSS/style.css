@@ -27,17 +27,17 @@ height: calc(550px / 5);
     width: 100%;
 
 }
+
 .col-10 img{
     position: absolute;
     top: 0px;
     left: 0px;
     height: 100%;
     width: 100%;
-
+    opacity: 0;
 }
-.col-10 img .active{
-    opacity: 1;
-
+.col-10 img.active{ 
+     opacity: 1;
 }
 
 

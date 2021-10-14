@@ -1,6 +1,6 @@
-.my_style{
+/* .my_style{
     background-color: red;
-}
+} */
 .container{
     height: 550px;
 }
@@ -17,12 +17,31 @@
 
 }
 
-.thumbneil_height{
+/* .thumbneil_height{
 height: calc(550px / 5);
-}
+} */
 .col-2{
     position: relative;
 }
+.col-2 img{
+    width: 100%;
+
+}
+.col-10 img{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+
+}
+.col-10 img .active{
+    opacity: 1;
+
+}
+
+
+
 .arrow-container{
     height: 100%;
 }

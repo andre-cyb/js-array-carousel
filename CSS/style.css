@@ -16,16 +16,24 @@
     text-align: right;
 
 }
+.my_row > div{
+    padding: 0px;
+}
 
 /* .thumbneil_height{
 height: calc(550px / 5);
 } */
 .col-2{
     position: relative;
+    background-color: black;
 }
 .col-2 img{
     width: 100%;
-
+    opacity: .6;
+}
+.col-2 img.Thumbnail_on_active{
+    opacity: 1;
+    border: 3px solid lightgray;
 }
 
 .col-10 img{

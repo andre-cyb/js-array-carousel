@@ -22,20 +22,20 @@ const text = [
 
 
 const boxActiveImg = document.querySelector(".col-10");
-let currentIndex = 4;
+let currentIndex = 0;
 
 for (let i = 0; i < items.length; i++) {
     const urlImg = items[i];
-
-    /*  let tagImgActive = `<img src="${urlImg}" height="" width="100%" alt="img ${i}">`;*/
-    /*   */
 
     let classeActive = "";
 
     if (i === currentIndex) {
         classeActive = "active";
     }
-    let tagImgActive = `<img class="${classeActive}" src="${urlImg}"  width="100%" alt="img ${i}" >`;
+    let tagImgActive = `<div>
+                            <img class="${classeActive}" src="${urlImg}"  width="100%" alt="img ${i}" > 
+                            <div class="didascalia text-white"> <h3></h3> <p></p> </div>
+                        </div>`;
     console.log(tagImgActive);
     boxActiveImg.innerHTML += tagImgActive;
 
@@ -47,14 +47,22 @@ for (let i = 0; i < items.length; i++) {
 
 
 const boxThumbnail = document.querySelector(".col-2");
+let activeClass = "Thumbnail_on_active";
+
 
 for (let i = 0; i < items.length; i++) {
     const currentImg = items[i];
+    console.log(i);
 
     // ho usato createElement perchè con innerHTML mi scriveva il codice dopo il div container arrow
     let tagImg = document.createElement("img");
     tagImg.src = currentImg;
     tagImg.alt = i;
+
+    if (i === currentIndex) {
+        tagImg.classList.add(activeClass);
+
+    }
 
     boxThumbnail.prepend(tagImg);
 
@@ -69,24 +77,82 @@ const arrowDown = document.querySelector(".arrow-down");
 
 
 arrowUp.addEventListener("click", function () {
+    //bigimg
     const activeImage = document.querySelector(".active");
     activeImage.classList.remove("active");
+    //
 
-    currentIndex--;
+    //thumb
+    const activeThumb = document.querySelector(".Thumbnail_on_active");
+    activeThumb.classList.remove(activeClass);
+    /* console.log(activeThumb); */
+    //
+
+
+    currentIndex++;
+    if (currentIndex > items.length - 1) {
+        currentIndex = 0;
+    }
+
+    //bigimg
     const imageTag = boxActiveImg.querySelectorAll("img");
     const newActiveImage = imageTag[currentIndex];
     newActiveImage.classList.add("active");
-    console.log(newActiveImage);
+    console.log(imageTag[currentIndex]);
+
+    //
+
+    //thumb
+    const tagThumbImg = boxThumbnail.querySelectorAll("img");
+    const newActiveThumb = tagThumbImg[currentIndex];
+    newActiveThumb.classList.add("Thumbnail_on_active");
+    //
+    /* console.log(newActiveImage); */
+    console.log(tagThumbImg[currentIndex]);
 });
+
+
+
+
+
+
+
+
+
+
 arrowDown.addEventListener("click", function () {
     const activeImage = document.querySelector(".active");
     activeImage.classList.remove("active");
 
-    currentIndex++;
+    //thumb
+    const activeThumb = document.querySelector(".Thumbnail_on_active");
+    activeThumb.classList.remove(activeClass);
+
+    //
+
+
+    currentIndex--;
+    if (currentIndex < 0) {
+        currentIndex = items.length - 1;
+    }
+
+
+
     const imageTag = boxActiveImg.querySelectorAll("img");
     const newActiveImage = imageTag[currentIndex];
     newActiveImage.classList.add("active");
+
     console.log(newActiveImage);
+
+
+    //thumb
+    const tagThumbImg = boxThumbnail.querySelectorAll("img");
+    const newActiveThumb = tagThumbImg[currentIndex];
+    newActiveThumb.classList.add("Thumbnail_on_active");
+    //
+
+
+
 });
 
 
